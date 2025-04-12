@@ -5,15 +5,18 @@ import 'light_color.dart';
 class AppTheme {
   const AppTheme();
   static ThemeData lightTheme = ThemeData(
-      backgroundColor: LightColor.background,
+      scaffoldBackgroundColor: LightColor.background,
       primaryColor: LightColor.background,
       cardTheme: CardTheme(color: LightColor.background),
-      textTheme: TextTheme(bodyText1: TextStyle(color: LightColor.black)),
+      textTheme: TextTheme(
+        bodyLarge: TextStyle(color: LightColor.black), // Updated here
+      ),
       iconTheme: IconThemeData(color: LightColor.iconColor),
-      bottomAppBarColor: LightColor.background,
+      bottomAppBarTheme: BottomAppBarTheme(color: LightColor.background),
       dividerColor: LightColor.lightGrey,
-      primaryTextTheme:
-          TextTheme(bodyText1: TextStyle(color: LightColor.titleTextColor)));
+      primaryTextTheme: TextTheme(
+          bodyLarge:
+              TextStyle(color: LightColor.titleTextColor))); // Updated here
 
   static TextStyle titleStyle =
       const TextStyle(color: LightColor.titleTextColor, fontSize: 16);

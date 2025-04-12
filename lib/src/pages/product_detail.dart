@@ -6,7 +6,7 @@ import 'package:flutter_ecommerce_app/src/widgets/title_text.dart';
 import 'package:flutter_ecommerce_app/src/widgets/extentions.dart';
 
 class ProductDetailPage extends StatefulWidget {
-  ProductDetailPage({Key key}) : super(key: key);
+  ProductDetailPage({Key? key}) : super(key: key);
 
   @override
   _ProductDetailPageState createState() => _ProductDetailPageState();
@@ -14,8 +14,8 @@ class ProductDetailPage extends StatefulWidget {
 
 class _ProductDetailPageState extends State<ProductDetailPage>
     with TickerProviderStateMixin {
-  AnimationController controller;
-  Animation<double> animation;
+  late AnimationController controller;
+  late Animation<double> animation;
   @override
   void initState() {
     super.initState();
@@ -69,20 +69,20 @@ class _ProductDetailPageState extends State<ProductDetailPage>
     double size = 20,
     double padding = 10,
     bool isOutLine = false,
-    Function onPressed,
+    Function? onPressed,
   }) {
     return Container(
       height: 40,
       width: 40,
       padding: EdgeInsets.all(padding),
-      // margin: EdgeInsets.all(padding),
       decoration: BoxDecoration(
         border: Border.all(
             color: LightColor.iconColor,
             style: isOutLine ? BorderStyle.solid : BorderStyle.none),
         borderRadius: BorderRadius.all(Radius.circular(13)),
-        color:
-            isOutLine ? Colors.transparent : Theme.of(context).backgroundColor,
+        color: isOutLine
+            ? Colors.transparent
+            : Theme.of(context).colorScheme.background,
         boxShadow: <BoxShadow>[
           BoxShadow(
               color: Color(0xfff8f8f8),
@@ -286,8 +286,9 @@ class _ProductDetailPageState extends State<ProductDetailPage>
             color: LightColor.iconColor,
             style: !isSelected ? BorderStyle.solid : BorderStyle.none),
         borderRadius: BorderRadius.all(Radius.circular(13)),
-        color:
-            isSelected ? LightColor.orange : Theme.of(context).backgroundColor,
+        color: isSelected
+            ? LightColor.orange
+            : Theme.of(context).colorScheme.background,
       ),
       child: TitleText(
         text: text,

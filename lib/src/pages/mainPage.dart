@@ -8,7 +8,8 @@ import 'package:flutter_ecommerce_app/src/widgets/title_text.dart';
 import 'package:flutter_ecommerce_app/src/widgets/extentions.dart';
 
 class MainPage extends StatefulWidget {
-  MainPage({Key key, this.title}) : super(key: key);
+  // Mark the title parameter as required
+  const MainPage({Key? key, required this.title}) : super(key: key);
 
   final String title;
 
@@ -18,6 +19,7 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   bool isHomePageSelected = true;
+
   Widget _appBar() {
     return Container(
       padding: AppTheme.padding,
@@ -32,7 +34,7 @@ class _MainPageState extends State<MainPage> {
             borderRadius: BorderRadius.all(Radius.circular(13)),
             child: Container(
               decoration: BoxDecoration(
-                color: Theme.of(context).backgroundColor,
+                color: Theme.of(context).colorScheme.background, // Updated here
                 boxShadow: <BoxShadow>[
                   BoxShadow(
                       color: Color(0xfff8f8f8),
@@ -53,7 +55,7 @@ class _MainPageState extends State<MainPage> {
       padding: EdgeInsets.all(10),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(13)),
-          color: Theme.of(context).backgroundColor,
+          color: Theme.of(context).colorScheme.background, // Updated here
           boxShadow: AppTheme.shadow),
       child: Icon(
         icon,
@@ -86,12 +88,13 @@ class _MainPageState extends State<MainPage> {
             Spacer(),
             !isHomePageSelected
                 ? Container(
-                  padding: EdgeInsets.all(10),
-                  child: Icon(
+                    padding: EdgeInsets.all(10),
+                    child: Icon(
                       Icons.delete_outline,
                       color: LightColor.orange,
                     ),
-                ).ripple(() {}, borderRadius: BorderRadius.all(Radius.circular(13)))
+                  ).ripple(() {},
+                    borderRadius: BorderRadius.all(Radius.circular(13)))
                 : SizedBox()
           ],
         ));
@@ -140,7 +143,9 @@ class _MainPageState extends State<MainPage> {
                         switchInCurve: Curves.easeInToLinear,
                         switchOutCurve: Curves.easeOutBack,
                         child: isHomePageSelected
-                            ? MyHomePage()
+                            ? MyHomePage(
+                                title: 'Home',
+                              )
                             : Align(
                                 alignment: Alignment.topCenter,
                                 child: ShoppingCartPage(),
